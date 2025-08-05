@@ -43,11 +43,38 @@ function getRoundResults(userOption) {
   }
 }
 
+const winnerMsgElement = document.getElementById("winner-msg");
+const optionsContainer = document.querySelector(".options-container");
+const resetGameBtn = document.getElementById("reset-game-btn");
+
 function showResults(userOption) {
-  const toGetWin = getRoundResults(userOption);
+  roundResultsMsg.innerText = getRoundResults(userOption);
   playerScoreSpanElement.innerText = playerScore;
   computerScoreSpanElement.innerText = computerScore;
-  roundResultsMsg.innerText = toGetWin;
+
+  if (playerScore == 3) {
+    optionsContainer.style.display = "none";
+    winnerMsgElement.innerText = `Player has won the game!`;
+    resetGameBtn.style.display = "block";
+  } else if (computerScore == 3) {
+    optionsContainer.style.display = "none";
+    winnerMsgElement.innerText = `Computer has won the game!`;
+    resetGameBtn.style.display = "block";
+  }
 }
 
-showResults("Rock");
+const rockBtn = document.getElementById("rock-btn");
+const paperBtn = document.getElementById("paper-btn");
+const scissorsBtn = document.getElementById("scissors-btn");
+
+rockBtn.addEventListener("click", function () {
+  showResults("Rock");
+});
+
+paperBtn.addEventListener("click", function () {
+  showResults("Paper");
+});
+
+scissorsBtn.addEventListener("click", function () {
+  showResults("Scissors");
+});
