@@ -63,6 +63,18 @@ function showResults(userOption) {
   }
 }
 
+function resetGame() {
+  computerScore = 0;
+  playerScore = 0;
+  playerScoreSpanElement.innerText = playerScore;
+  computerScoreSpanElement.innerText = computerScore;
+  resetGameBtn.style.display = "hidden";
+  optionsContainer.style.display = "block";
+  resetGameBtn.style.display = "";
+  winnerMsgElement.innerHTML = "";
+  roundResultsMsg.innerHTML = "";
+}
+
 const rockBtn = document.getElementById("rock-btn");
 const paperBtn = document.getElementById("paper-btn");
 const scissorsBtn = document.getElementById("scissors-btn");
@@ -78,3 +90,5 @@ paperBtn.addEventListener("click", function () {
 scissorsBtn.addEventListener("click", function () {
   showResults("Scissors");
 });
+
+resetGameBtn.addEventListener("click", resetGame);
